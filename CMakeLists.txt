@@ -23,6 +23,8 @@ set(PROJECT_SOURCES
         GamePannel.h
         GamePannel.ui
         Card.cpp
+        CardPanel.cpp
+        Player.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
