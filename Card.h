@@ -1,4 +1,5 @@
 #pragma once
+#include <qtypes.h>
 
 class Card {
  public:
@@ -29,8 +30,10 @@ class Card {
   Card();
   ~Card();
 
-  CardSuit getSuit();
-  CardPoint getPoint();
+  Card(CardPoint point, CardSuit suit);
+
+  CardSuit getSuit() const;
+  CardPoint getPoint() const;
 
   void setSuit(CardSuit &suit);
   void setPoint(CardPoint &point);
@@ -39,3 +42,14 @@ class Card {
   CardSuit _suit{};
   CardPoint _point{};
 };
+
+// 对象比较
+bool lessSort(const Card& c1, const Card& c2);
+bool greaterSort(const Card& c1, const Card& c2);
+bool operator<(const Card& c1, const Card& c2);
+
+// 操作符重载 ==
+bool operator==(const Card& left, const Card& right);
+
+// 重写全局函数 qHash
+uint qHash(const Card& card);

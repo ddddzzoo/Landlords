@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
         GamePannel.h
         GamePannel.ui
         Card.cpp
+        Cards.cpp
         CardPanel.cpp
         Player.cpp
 )
