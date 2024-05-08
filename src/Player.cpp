@@ -35,3 +35,36 @@ int Player::getScore() const { return _score; }
 void Player::setWin(bool flag) { _isWin = flag; }
 
 bool Player::isWin() const { return _isWin; }
+
+void Player::setPrevPlayer(Player *player) { _prev = player; }
+
+void Player::setNextPlayer(Player *player) { _next = player; }
+
+Player *Player::getPrevPlayer() const { return _prev; }
+
+Player *Player::getNextPlayer() const { return _next; }
+
+void Player::grabLordBet(int point) {}
+
+void Player::storeDispatchCard(const Card &card) { _cards.add(card); }
+
+void Player::storeDispatchCard(const Cards &cards) { _cards.add(cards); }
+
+Cards Player::getCards() { return _cards; }
+
+void Player::clearCards() { _cards.clear(); }
+
+void Player::playCard(Cards &cards) { _cards.remove(cards); }
+
+Player *Player::getPendPlayer() { return _pend; }
+
+Cards Player::getPendCards() const { return _pendCards; }
+
+void Player::storePendingInfo(Player *player, Cards &cards) {
+  _pend = player;
+  _pendCards = cards;
+}
+
+void Player::prepareCallLord() {}
+
+void Player::preparePlayCard() {}
