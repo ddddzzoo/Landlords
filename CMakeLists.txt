@@ -12,20 +12,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+#查找当前文件夹中的所有源代码文件，也可以通过Set命令将所有文件设置为一个变量
+FILE(GLOB SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+#查找设置当前文件夹中所有的头文件
+FILE(GLOB HEAD_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 #查找设置当前文件夹中所有的ui文件
-FILE(GLOB UI_FILES "./*.ui")
-#通过Ui文件生成对应的头文件
-qt_wrap_ui(WRAP_FILES ${UI_FILES})
+FILE(GLOB UI_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.ui")
 
 set(PROJECT_SOURCES
-        main.cpp
-        GamePannel.cpp
-        GamePannel.h
-        GamePannel.ui
-        Card.cpp
-        Cards.cpp
-        CardPanel.cpp
-        Player.cpp
+       ${WRAP_FILES}
+       ${HEAD_FILES}
+       ${SRC_FILES}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

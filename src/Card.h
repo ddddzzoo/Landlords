@@ -1,5 +1,6 @@
 #pragma once
-#include <qtypes.h>
+
+#include <QVector>
 
 class Card {
  public:
@@ -35,8 +36,8 @@ class Card {
   CardSuit getSuit() const;
   CardPoint getPoint() const;
 
-  void setSuit(CardSuit &suit);
-  void setPoint(CardPoint &point);
+  void setSuit(CardSuit& suit);
+  void setPoint(CardPoint& point);
 
  private:
   CardSuit _suit{};
@@ -53,3 +54,5 @@ bool operator==(const Card& left, const Card& right);
 
 // 重写全局函数 qHash
 uint qHash(const Card& card);
+
+using CardList = QVector<Card>;

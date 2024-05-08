@@ -19,7 +19,7 @@ void Card::setPoint(CardPoint& point) { _point = point; }
 
 bool lessSort(const Card& c1, const Card& c2) {
   if (c1.getPoint() == c2.getPoint()) {
-    return c1.getPoint() < c2.getPoint();
+    return c1.getSuit() < c2.getSuit();
   }
   else {
     return c1.getPoint() < c2.getPoint();
@@ -28,7 +28,7 @@ bool lessSort(const Card& c1, const Card& c2) {
 
 bool greaterSort(const Card& c1, const Card& c2) {
   if (c1.getPoint() == c2.getPoint()) {
-    return c1.getPoint() > c2.getPoint();
+    return c1.getSuit() > c2.getSuit();
   }
   else {
     return c1.getPoint() > c2.getPoint();
@@ -42,6 +42,4 @@ bool operator==(const Card& left, const Card& right) {
           left.getSuit() == right.getSuit());
 }
 
-uint qHash(const Card& card) {
-  return card.getPoint() * 100 + card.getSuit();
-}
+uint qHash(const Card& card) { return card.getPoint() * 100 + card.getSuit(); }

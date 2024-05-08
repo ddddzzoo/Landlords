@@ -50,6 +50,11 @@ class Cards {
   bool contains(const Card& card);
   bool contains(const Cards& cards);
 
+  // 随机取出一张扑克牌 用于发牌
+  Card takeRandomCard();
+
+  // QSet -> QVector 排序
+  CardList toCardList(SortType type = Desc);
  private:
   QSet<Card> _cards;
 };

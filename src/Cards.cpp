@@ -1,5 +1,7 @@
 #include "Cards.h"
 
+#include <QRandomGenerator>
+
 Cards::Cards() {}
 
 Cards::~Cards() {}
@@ -80,4 +82,29 @@ bool Cards::contains(const Card &card) { return _cards.contains(card); }
 
 bool Cards::contains(const Cards &cards) {
   return _cards.contains(cards._cards);
+}
+
+Card Cards::takeRandomCard() {
+  // 生成随机数
+  int num = QRandomGenerator::global()->bounded(_cards.size());
+  QSet<Card>::const_iterator it = _cards.constBegin();
+  for (int i = 0; i < num; ++i, ++it)
+    ;
+  Card card = *it;
+  _cards.erase(it);
+  return card;
+}
+
+CardList Cards::toCardList(SortType type) {
+  CardList list;
+  for (auto &i : _cards) {
+    list << i;
+  }
+  if (type == Asc) {
+    std::sort(list.begin(), list.end(), lessSort);
+  }
+  else if (type == Desc) {
+    std::sort(list.begin(), list.end(), greaterSort);
+  }
+  return list;
 }
